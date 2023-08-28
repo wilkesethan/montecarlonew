@@ -1,17 +1,10 @@
-# coding: utf-8
-
-# In[1]:
-
-#assuming you already know how monte carlo works
-#if not, plz click the link below
-# https://datascienceplus.com/how-to-apply-monte-carlo-simulation-to-forecast-stock-prices-using-python/
-
-#monte carlo simulation is a buzz word for people outside of financial industry
-#in the industry, everybody jokes about it but no one actually uses it
+#in the quant industry, everyone jokes about monte carlo but nobody actually uses it
 #including my risk quant friends, they be like why the heck use that
 #you may argue its application in option pricing to monitor fat tail events
 #seriously, did anyone predict 2008 financial crisis?
 #or did anyone foresee the vix surging in early 2018?
+
+#the purpose of this code is to quantitatively test the profitability of monte carlo
 
 #the weakness of monte carlo, perhaps in every forecast methodology
 #is that our pseudo random number is generated via empirical distribution
@@ -36,10 +29,7 @@ import fix_yahoo_finance as yf
 import random as rd
 from sklearn.model_selection import train_test_split
 
-
-# In[2]:
-
-#this list is purely designed to generate gradient color 
+#this list is just designed to generate gradient color 
 global colorlist
 colorlist=['#fffb77',
  '#fffa77',
@@ -199,10 +189,6 @@ colorlist=['#fffb77',
  '#ff4b4a',
  '#ff4a4a']
 
-
-# In[3]:
-
-
 #this is where the actual simulation happens
 #testsize denotes how much percentage of dataset would be used for testing
 #simulation denotes the number of simulations
@@ -260,9 +246,6 @@ def monte_carlo(data,testsize=0.5,simulation=100,**kwargs):
     
     return forecast_horizon,d,pick
 
-
-# In[4]:
-
 #result plotting
 def plot(df,forecast_horizon,d,pick,ticker):
     
@@ -311,9 +294,6 @@ def plot(df,forecast_horizon,d,pick,ticker):
     plt.xlabel('T+Days')
     plt.show()
 
-
-# In[5]:
-
 #we also gotta test if the surge in simulations increases the prediction accuracy
 #simu_start denotes the minimum simulation number
 #simu_end denotes the maximum simulation number
@@ -360,9 +340,6 @@ def test(df,ticker,simu_start=100,simu_end=1000,simu_delta=100,**kwargs):
     plt.ylabel('Times of Simulation')
     plt.title(f"Prediction accuracy doesn't depend on the numbers of simulation.\nTicker: {ticker}\n")
     plt.show()
-
-
-# In[6]:
 
 #lets try something extreme, pick ge, the worst performing stock in 2018
 #see how monte carlo works for both direction prediction and fat tail simulation
