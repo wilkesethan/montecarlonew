@@ -195,7 +195,7 @@ colorlist=['#fffb77',
 #theoretically speaking, the larger the better
 #given the constrained computing power
 #we have to take a balance point between efficiency and effectiveness
-def monte_carlo(data,testsize=0.5,simulation=100,**kwargs):    
+def monte_carlo(data,testsize=0.5,simulation=1500,**kwargs):    
     
     #train test split as usual
     df,test=train_test_split(data,test_size=testsize,shuffle=False,**kwargs)
